@@ -1,0 +1,17 @@
+{
+  "name": "Old-Baku Boutique",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "ms-vscode.live-server"
+      ]
+    }
+  },
+  "postCreateCommand": "if [ -f backend/package.json ]; then cd backend && npm i || true; fi"
+}
