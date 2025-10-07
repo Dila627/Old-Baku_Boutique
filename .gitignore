@@ -1,0 +1,22 @@
+# IDE
+.vscode/
+.vs/
+*.user
+*.suo
+*.userprefs
+.idea/
+
+# OS / temp
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+
+# Node / backend
+node_modules/
+.env
+backend/.env
+
+# Build
+bin/
+obj/
