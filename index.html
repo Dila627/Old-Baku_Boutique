@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Old Baku Boutique Hotel — Главная</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <div id="headerContainer"></div>
+
+  <!-- Hero -->
+  <section id="hero" class="first-section vh-100 d-flex align-items-center text-white position-relative">
+    <div class="bg-cover" style="background-image:url('images/hero.jpg');"></div>
+    <div class="container position-relative" data-aos="fade-up">
+      <h1 id="heroTitle" class="display-4 fw-bold">Добро пожаловать в Old Baku Boutique Hotel</h1>
+      <p id="heroLead" class="lead mt-3">Мини-отель в центре исторического Баку</p>
+      <a href="#booking" id="bookingButton" class="btn btn-gold btn-lg mt-4 ripple">Забронировать сейчас</a>
+    </div>
+    <div class="scroll-indicator" aria-hidden="true"></div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-5">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6" data-aos="fade-right">
+          <img src="images/gallery1.jpg" class="img-fluid rounded-4 shadow-lg" alt="Old Baku Boutique Interior">
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <h2 id="aboutTitle" class="mb-3">О нас</h2>
+          <p id="aboutText" class="text-secondary fs-5">
+            Old Baku Boutique Hotel — уютный мини-отель в историческом центре Баку, всего в 200 м от Дворца Ширваншахов.
+            Рядом с отелем — Maiden Tower, Музей ковра и Fountains Square.
+           <a href="about.html" class="link-offset-2 link-underline link-underline-opacity-0">Подробнее</a>
+</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rooms -->
+  <section id="rooms" class="py-5 bg-light">
+    <div class="container">
+      <h2 id="roomsTitle" class="text-center mb-4">Наши номера</h2>
+      <div id="roomsContainer" class="row g-4"></div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="py-5">
+    <div class="container">
+      <h2 id="servicesTitle" class="text-center mb-4">Услуги</h2>
+      <div class="row g-4">
+        <div class="col-6 col-md-3" data-aos="zoom-in">
+          <div class="feature-card text-center p-4 rounded-4 shadow-sm h-100">
+            <div class="feature-icon mb-3">🍽️</div>
+            <h5 class="mb-1">Ресторан</h5>
+            <p class="text-secondary small mb-0">Завтрак, обед и ужин на территории отеля</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="100">
+          <div class="feature-card text-center p-4 rounded-4 shadow-sm h-100">
+            <div class="feature-icon mb-3">📶</div>
+            <h5 class="mb-1">Wi‑Fi</h5>
+            <p class="text-secondary small mb-0">Бесплатный интернет на всей территории</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="200">
+          <div class="feature-card text-center p-4 rounded-4 shadow-sm h-100">
+            <div class="feature-icon mb-3">🚕</div>
+            <h5 class="mb-1">Трансфер</h5>
+            <p class="text-secondary small mb-0">От/до аэропорта по запросу</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300">
+          <div class="feature-card text-center p-4 rounded-4 shadow-sm h-100">
+            <div class="feature-icon mb-3">🏛️</div>
+            <h5 class="mb-1">Экскурсии</h5>
+            <p class="text-secondary small mb-0">Туры по историческому Баку</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery (homepage carousel only) -->
+  <section id="gallery" class="py-5 bg-light">
+    <div class="container">
+      <h2 id="galleryTitle" class="text-center mb-4">Галерея</h2>
+      <div class="carousel-strip">
+        <div id="homeGallery" class="carousel-track" aria-label="Галерея фото (карусель)"></div>
+        <div class="carousel-nav">
+          <button class="carousel-btn js-gal-left" aria-label="Назад">‹</button>
+          <button class="carousel-btn js-gal-right" aria-label="Вперёд">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section id="reviews" class="py-5">
+    <div class="container">
+      <h2 id="reviewsTitle" class="text-center mb-4">Отзывы гостей</h2>
+      <div id="reviewsContainer" class="row g-4"></div>
+      <form id="reviewForm" class="mt-4 mx-auto" style="max-width: 680px;" autocomplete="on">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <input id="reviewName" type="text" class="form-control" placeholder="Ваше имя" required>
+          </div>
+          <div class="col-md-6">
+            <input id="reviewEmail" type="email" class="form-control" placeholder="Email" required>
+          </div>
+          <div class="col-12">
+            <input id="reviewText" type="text" class="form-control" placeholder="Ваш отзыв" required>
+          </div>
+          <div class="col-md-6">
+            <select id="reviewCountry" class="form-select" required>
+              <option value="">Страна</option>
+              <option value="RU">🇷🇺 Россия</option>
+              <option value="KZ">🇰🇿 Казахстан</option>
+              <option value="US">🇺🇸 USA</option>
+              <option value="AZ">🇦🇿 Азербайджан</option>
+              <option value="TR">🇹🇷 Türkiye</option>
+              <option value="DE">🇩🇪 Deutschland</option>
+              <option value="GB">🇬🇧 United Kingdom</option>
+              <option value="FR">🇫🇷 France</option>
+              <option value="IT">🇮🇹 Italia</option>
+            </select>
+          </div>
+          <div class="col-md-6 d-flex align-items-center gap-2">
+            <span>Оценка:</span>
+            <div id="reviewStars" class="d-inline-block">
+              <input type="radio" name="rating" value="1" required>★
+              <input type="radio" name="rating" value="2">★
+              <input type="radio" name="rating" value="3">★
+              <input type="radio" name="rating" value="4">★
+              <input type="radio" name="rating" value="5">★
+            </div>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-outline-gold ripple w-100" type="submit">Оставить отзыв</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Booking -->
+  <section id="booking" class="py-5 bg-light">
+    <div class="container">
+      <h2 id="bookingTitle" class="text-center mb-4">Бронирование</h2>
+      <div id="bookingFormContainer"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="footerContainer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script type="module" src="js/translations.js"></script>
+  <script type="module" src="js/main.js"></script>
+
+<!-- Room details modal (shared) -->
+<div class="modal fade modal-room" id="roomModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Номер</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

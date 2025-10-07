@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "image": "images/room1.jpg",
+    "title": {
+      "ru": "Budget Twin",
+      "en": "Budget Twin",
+      "kz": "Budget Twin"
+    },
+    "description": {
+      "ru": "Двухместный номер с двумя кроватями. Идеален для коротких поездок.",
+      "en": "Twin room ideal for short stays.",
+      "kz": "Қысқа сапарларға ыңғайлы twin бөлме."
+    },
+    "price": 120,
+    "features": [
+      "wifi",
+      "tv",
+      "ac",
+      "kettle",
+      "safe",
+      "breakfast"
+    ],
+    "extraImages": [
+      "images/room1-1.jpg",
+      "images/room1-2.jpg",
+      "images/room1-bath.jpg",
+      "images/room1-balcony.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "image": "images/room2.jpg",
+    "title": {
+      "ru": "Deluxe Double",
+      "en": "Deluxe Double",
+      "kz": "Deluxe Double"
+    },
+    "description": {
+      "ru": "Просторный номер с двуспальной кроватью и рабочей зоной.",
+      "en": "Spacious double with work area.",
+      "kz": "Жұмыс аймағы бар кең double бөлме."
+    },
+    "price": 180,
+    "features": [
+      "wifi",
+      "tv",
+      "ac",
+      "kettle",
+      "safe",
+      "breakfast"
+    ],
+    "extraImages": [
+      "images/room2-1.jpg",
+      "images/room2-2.jpg",
+      "images/room2-bath.jpg",
+      "images/room2-balcony.jpg"
+    ]
+  },
+  {
+    "id": 3,
+    "image": "images/room3.jpg",
+    "title": {
+      "ru": "Suite with Balcony",
+      "en": "Suite with Balcony",
+      "kz": "Suite with Balcony"
+    },
+    "description": {
+      "ru": "Люкс с балконом и видом на Старый город.",
+      "en": "Suite with balcony overlooking the Old City.",
+      "kz": "Ескі қалаға қараған балконы бар люкс."
+    },
+    "price": 260,
+    "features": [
+      "wifi",
+      "tv",
+      "ac",
+      "kettle",
+      "safe",
+      "breakfast",
+      "balcony"
+    ],
+    "extraImages": [
+      "images/room3-1.jpg",
+      "images/room3-2.jpg",
+      "images/room3-bath.jpg",
+      "images/room3-balcony.jpg"
+    ]
+  }
+]

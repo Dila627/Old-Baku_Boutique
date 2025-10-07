@@ -1,0 +1,38 @@
+<form id="bookingForm" class="mx-auto card border-0 shadow-lg rounded-4 p-4" style="max-width:700px;">
+  <div class="row g-3">
+    <div class="col-md-6">
+      <label for="name" class="form-label" id="nameLabel">Имя</label>
+      <input type="text" class="form-control" id="name" required>
+    </div>
+    <div class="col-md-6">
+      <label for="email" class="form-label" id="emailLabel">Email</label>
+      <input type="email" class="form-control" id="email" required>
+    </div>
+    <div class="col-md-6">
+      <label for="phone" class="form-label" id="phoneLabel">Телефон</label>
+      <input type="tel" class="form-control" id="phone" required>
+    </div>
+    <div class="col-md-3">
+      <label for="checkin" class="form-label" id="checkinLabel">Дата заезда</label>
+      <input type="date" class="form-control" id="checkin" required>
+    </div>
+    <div class="col-md-3">
+      <label for="checkout" class="form-label" id="checkoutLabel">Дата отъезда</label>
+      <input type="date" class="form-control" id="checkout" required>
+    </div>
+    <div class="col-md-6">
+      <label for="room" class="form-label" id="roomLabel">Тип номера</label>
+      <select class="form-select" id="room" required></select>
+    </div>
+    <div class="col-md-6">
+      <label for="guests" class="form-label" id="guestsLabel">Количество гостей</label>
+      <input type="number" class="form-control" id="guests" min="1" max="10" value="1" required>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-gold ripple w-100" id="submitBtn">Отправить бронирование</button>
+    </div>
+  </div>
+  <div class="form-hint small text-secondary mt-3">
+    Мы свяжемся с вами в течение 15 минут, чтобы подтвердить детали.
+  </div>
+</form>

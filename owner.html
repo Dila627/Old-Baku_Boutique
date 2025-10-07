@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Панель владельца — Old Baku Boutique</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+</head>
+<body>
+  <div id="headerContainer"></div>
+
+  <section class="py-5">
+    <div class="container" style="max-width:960px">
+      <h1 class="mb-4">Панель владельца</h1>
+
+      <!-- Login Card -->
+      <div id="ownerLoginCard" class="card p-4 mb-4">
+        <h5 class="mb-3">Вход</h5>
+        <div class="row g-3">
+          <div class="col-md-5">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" id="ownerEmail" placeholder="owner@example.com" required>
+          </div>
+          <div class="col-md-5">
+            <label class="form-label">Пароль</label>
+            <input type="password" class="form-control" id="ownerPassword" required>
+          </div>
+          <div class="col-md-2 d-grid">
+            <label class="form-label opacity-0">.</label>
+            <button id="ownerLoginBtn" class="btn btn-gold ripple">Войти</button>
+          </div>
+        </div>
+        <div class="small text-secondary mt-3">Доступ только для владельца. Данные передаются по HTTPS.</div>
+      </div>
+
+      <!-- Editor -->
+      <div id="ownerEditor" class="card p-4 d-none">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h5 class="mb-0">Редактор цен и описаний</h5>
+          <button id="ownerLogoutBtn" class="btn btn-outline-gold ripple btn-sm">Выйти</button>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-dark align-middle">
+            <thead>
+              <tr>
+                <th>ID</th><th>Название (RU)</th><th>Описание (RU)</th><th>Изображение (URL)</th><th>Цена (AZN)</th><th>Сохранить</th>
+              </tr>
+            </thead>
+            <tbody id="ownerRoomsTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="footerContainer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module">
+    import { initLanguage } from "./js/translations.js";
+
+    const API = "/api";
+    let token = localStorage.getItem("owner_jwt") || "";
+
+    async function api(path, opts={}){
+      const headers = {"Content-Type":"application/json", ...(token ? {"Authorization": "Bearer "+token} : {})};
+      const res = await fetch(API+path, {...opts, headers});
+      if (!res.ok) throw new Error(await res.text());
+      return res.json();
+    }
+
+    function fillTable(rooms){
+      const tbody = document.getElementById("ownerRoomsTable");
+      tbody.innerHTML = "";
+      rooms.forEach(r=>{
+        const tr = document.createElement("tr");
+        tr.innerHTML = \`
+          <td>\${r.id}</td>
+          <td><input class="form-control form-control-sm" value="\${r.title?.ru||""}" data-k="title"></td>
+          <td style="max-width:160px"><input class="form-control form-control-sm" type="number" min="0" step="1" value="\${r.price||0}" data-k="price"></td>
+          <td><button class="btn btn-outline-gold btn-sm ripple" data-id="\${r.id}">Сохранить</button></td>
+        \`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    async function loadRooms(){
+      const data = await api("/rooms");
+      fillTable(data);
+    }
+
+    async function saveRow(btn){
+      const tr = btn.closest("tr");
+      const id = Number(btn.getAttribute("data-id"));
+      const titleRu = tr.querySelector('input[data-k="title"]').value.trim();\n      const descRu = tr.querySelector('textarea[data-k="desc"]').value.trim();\n      const image = tr.querySelector('input[data-k=\"image\"]').value.trim();\n      const price = Number(tr.querySelector('input[data-k=\"price\"]').value);\n      await api("/rooms/"+id, {method:"PUT", body: JSON.stringify({ title: {ru: titleRu}, description:{ru:descRu}, image, price })});
+      showToast("Сохранено");
+    }
+
+    function showToast(msg){
+      const el = document.createElement("div");
+      el.className = "toast align-items-center border-0 show";
+      el.innerHTML = '<div class="d-flex"><div class="toast-body">'+msg+'</div></div>';
+      document.body.appendChild(el);
+      setTimeout(()=> el.remove(), 2000);
+    }
+
+    function toggleEditor(show){
+      document.getElementById("ownerLoginCard").classList.toggle("d-none", show);
+      document.getElementById("ownerEditor").classList.toggle("d-none", !show);
+    }
+
+    document.addEventListener("click", async (e)=>{
+      const btn = e.target.closest("button[data-id]");
+      if (btn) saveRow(btn);
+    });
+
+    document.getElementById("ownerLoginBtn").addEventListener("click", async ()=>{
+      const email = document.getElementById("ownerEmail").value.trim();
+      const password = document.getElementById("ownerPassword").value;
+      try{
+        const res = await fetch(API+"/auth/login",{method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({email,password})});
+        if (!res.ok) throw new Error(await res.text());
+        const {token:jwt} = await res.json();
+        token = jwt;
+        localStorage.setItem("owner_jwt", token);
+        toggleEditor(true);
+        await loadRooms();
+      }catch(err){ alert("Ошибка входа"); }
+    });
+
+    document.getElementById("ownerLogoutBtn").addEventListener("click", ()=>{
+      token = "";
+      localStorage.removeItem("owner_jwt");
+      toggleEditor(false);
+    });
+
+    // init
+    initLanguage("ru");
+    if (token) { toggleEditor(true); loadRooms().catch(()=>toggleEditor(false)); }
+  </script>
+</body>
+</html>
