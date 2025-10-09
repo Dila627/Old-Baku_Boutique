@@ -23,9 +23,46 @@
   <section id="hero" class="first-section vh-100 d-flex align-items-center text-white position-relative">
     <div class="bg-cover" style="background-image:url('images/hero.jpg');"></div>
     <div class="container position-relative" data-aos="fade-up">
-      <h1 id="heroTitle" class="display-4 fw-bold">Добро пожаловать в Old Baku Boutique Hotel</h1>
-      <p id="heroLead" class="lead mt-3">Мини-отель в центре исторического Баку</p>
-      <a href="#booking" id="bookingButton" class="btn btn-gold btn-lg mt-4 ripple">Забронировать сейчас</a>
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-6 text-white">
+          <h1 id="heroTitle" class="display-4 fw-bold">Добро пожаловать в Old Baku Boutique Hotel</h1>
+          <p id="heroLead" class="lead mt-3">Мини-отель в центре исторического Баку</p>
+          <a href="rooms.html" id="discoverRooms" class="btn btn-outline-light btn-lg mt-4 ripple">Посмотреть номера</a>
+        </div>
+        <div class="col-lg-5 ms-lg-auto">
+          <div class="hero-booking-card shadow-lg">
+            <h3 id="heroBookingTitle" class="h4 mb-3">Бронирование номера</h3>
+            <form id="heroBookingForm" class="hero-booking-form">
+              <div class="row g-3">
+                <div class="col-12">
+                  <label for="heroCheckin" id="heroCheckinLabel" class="form-label">Дата заезда</label>
+                  <input type="date" id="heroCheckin" class="form-control" required>
+                </div>
+                <div class="col-12">
+                  <label for="heroCheckout" id="heroCheckoutLabel" class="form-label">Дата отъезда</label>
+                  <input type="date" id="heroCheckout" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="heroGuests" id="heroGuestsLabel" class="form-label">Гости</label>
+                  <select id="heroGuests" class="form-select">
+                    <option value="1">1 гость</option>
+                    <option value="2" selected>2 гостя</option>
+                    <option value="3">3 гостя</option>
+                    <option value="4">4 гостя</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="heroRoomSelect" id="heroRoomLabel" class="form-label">Тип номера</label>
+                  <select id="heroRoomSelect" class="form-select" required></select>
+                </div>
+                <div class="col-12">
+                  <button type="submit" id="heroSubmit" class="btn btn-gold w-100 ripple">Проверить доступность</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="scroll-indicator" aria-hidden="true"></div>
   </section>
@@ -153,14 +190,6 @@
           </div>
         </div>
       </form>
-    </div>
-  </section>
-
-  <!-- Booking -->
-  <section id="booking" class="py-5 bg-light">
-    <div class="container">
-      <h2 id="bookingTitle" class="text-center mb-4">Бронирование</h2>
-      <div id="bookingFormContainer"></div>
     </div>
   </section>
 
